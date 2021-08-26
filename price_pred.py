@@ -8,6 +8,10 @@ import matplotlib.pyplot as plt
 from datetime import date, datetime
 import pickle
 import statsmodels.api as sm
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score
+import statsmodels.api as sm
+
 
 
 
@@ -18,6 +22,19 @@ def app():
     df = pd.read_csv('data/btc_price_polarity_trend.csv')
     df_s = pd.read_csv('data/reddit_btc_roll.csv')
     df_g = pd.read_csv('data/google_trend_3m.csv')
+    df_btc = pd.read_csv('data/df_btc_time.csv')
+
+    df_btc['Date'] = pd.to_datetime(df_btc['Date'])
+    df_btc.set_index('Date', inplace=True)
+    
+    # Clean df_btc
+    X = df_btc.drop(columns=['High', 'Low', 'Open', 'Close', 'Marketcap'])
+    y = df_btc['Close']
+
+    # Train-Test Split to prepare X and y
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+    X_train = sm.add_constant(X_train)
+    X_test = sm.add_constant(X_test)
 
 
     # Collects user features into dataframe
@@ -94,15 +111,19 @@ def app():
         st.write(fig3)    
 
      # Price Prediction
-    with st.expander('Price Predictions for the next 7 days'):
+    with st.expander('Price Predictions'):
 
         # Reads in saved model
-        filename = 'assets/linear_model.pkl'
-        loaded_model = pickle.load(open(filename, 'rb'))
+        filename1 = 'assets/linear_model.pkl'
+        loaded_model = pickle.load(open(filename1, 'rb'))
 
         # Apply model to make predictions
-        #preds = loaded_model.predict(df)
+        results = loaded_model.predict(X_test)
+        r2 = round(r2_score(y_test, results), 4)*100
+        st.write(results)
+        st.write(f'Model Performance: {r2} %')
+        
 
         #price = 
-        st.write(price[preds])
+        #st.write(price[preds])
 

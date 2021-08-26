@@ -182,3 +182,4 @@ Thank you!# cryptosentiment-heroku
 # cryptosentiment-heroku
 # cryptosentiment-heroku
 # cryptosentiment-heroku
+# cryptosentiment-trial

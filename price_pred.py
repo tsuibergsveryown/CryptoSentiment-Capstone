@@ -10,7 +10,6 @@ import pickle
 import statsmodels.api as sm
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
-import statsmodels.api as sm
 
 
 
@@ -122,8 +121,4 @@ def app():
         r2 = round(r2_score(y_test, results), 4)*100
         st.write(results)
         st.write(f'Model Performance: {r2} %')
-        
-
-        #price = 
-        #st.write(price[preds])
 

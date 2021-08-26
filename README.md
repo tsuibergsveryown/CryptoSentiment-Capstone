@@ -123,13 +123,12 @@ For this capstone project, the following Jupyter notebooks are used:
     - Data In:
         - Bitcoin Historical Record (data/df_btc.csv)
     - Data Out:
-        - Time Series Linear Model (assets/linear_model.csv)
+        - Time Series Linear Model (assets/linear_model.pkl)
 - [Time Series Price Prediction with Sentiment Analysis and Google Trend](/Capstone1_4.2_PriceSentimentTrendPrediction_BTC.ipynb)
     - Data In:
         - 3 months Price Polarity based on subreaddit forum (data/df_3m_price_polarity.csv)
         - 3 months Price Polarity with Google Trend (data/btc_price_polarity_trend.csv)
     - Data Out:
-        - 
 - [Final Recommendation](/Capstone1_5_Recommendation.ipynb)
     - Data In:
         - Bitcoin Cleaned Historical Record (cryptodata/cleaned_btc.csv)

@@ -178,10 +178,4 @@ For next steps, I'd recommend to use 2 additional stocks to put as an additional
 
 Futhermore, I'd also recommend to bring this web-app to come to life by giving a minimalistic user design. Working with one UX designer and software engineer are essential to bring this valuable app to life. 
 
-Thank you!# cryptosentiment-heroku
-# cryptosentiment-heroku
-# cryptosentiment-heroku
-# cryptosentiment-heroku
-# cryptosentiment-trial
-# cryptosentiment-trial
-# cryptosentiment-trial
+Thank you!

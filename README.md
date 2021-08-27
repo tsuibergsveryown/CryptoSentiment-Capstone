@@ -12,13 +12,15 @@ In this presentation, we will explore the following:
 
 ### Problem Statement
 
-The goal of my first capstone aims to create a crypto investment app to serve as an additional input with the insight of public sentiment of a given cryptocurrency to everyday retail investors. In order to better understand the price movement of cryptocurrencies, we'll explore the above data and proof myself (and many others) wrong that public sentiment on social media has little to do with the bull price movement we saw during the start of COVID-19 pandemic, regardless of what we naively believe in. 
+The goal of my first capstone aims to create a crypto investment app to serve as an additional input with the insight of public sentiment of a given cryptocurrency to everyday retail investors. In order to better understand the price movement of cryptocurrencies, we'll explore the above data, and investigate public sentiment on social media and the closing price on a particular cryptocurrency. Are they correlated? How correlated? How do they affect price prediction?
+
+Investigate of public sentiment on social media on particular cryptocurrency and the closing price of cryptocurrency. Are they correlated? How correlated? How they affects price prediction?
 
 A good portion of this project is spent on data wrangling, cleaning, and processing while the last part is dedicated to model training and predictions. 
 
 The key deliverable from this project is a tool that scrapes thousands of Reddit posts on Bitcoin (r/bitcoin) in combination of google trend to analyze and model the relationships between daily closing price and public sentiment from April 7 to July 6, 2021 (3 months trend).
 
-Viewer can acess to the web-app [here] (https://cryptosentiment.herojuapp.com/)
+Viewer can acess to the web-app [here] (https://cryptosentiment-rg.herojuapp.com/)
 
 
 ### Contents of this README
@@ -96,7 +98,7 @@ For this capstone project, the following Jupyter notebooks are used:
     - Data In:
         - Twitter API
     - Data Out:
-        - Most recent Bitcoin tweets (data/btc_df_complete.csv)
+        - [Most recent Bitcoin tweets] (data/btc_df_complete.csv)
         - Most recent Ethereum tweets (data/eth_df_complete.csv)
         - Most recent Cardano tweets (data/ada_df_complete.csv)
         - Most recent Dogecoin tweets (data/dog_df_complete.csv)
@@ -123,7 +125,7 @@ For this capstone project, the following Jupyter notebooks are used:
     - Data In:
         - Bitcoin Historical Record (data/df_btc.csv)
     - Data Out:
-        - Time Series Linear Model (assets/linear_model.pkl)
+        - Time Series Linear Model (assets/linear_model.csv)
 - [Time Series Price Prediction with Sentiment Analysis and Google Trend](/Capstone1_4.2_PriceSentimentTrendPrediction_BTC.ipynb)
     - Data In:
         - 3 months Price Polarity based on subreaddit forum (data/df_3m_price_polarity.csv)
@@ -134,12 +136,13 @@ For this capstone project, the following Jupyter notebooks are used:
         - Bitcoin Cleaned Historical Record (cryptodata/cleaned_btc.csv)
         - 3 months Price Polarity based on subreaddit forum (data/df_3m_price_polarity.csv)
         - 3 months Price Polarity with Google Trend (data/btc_price_polarity_trend.csv)
-    - Data Out:
 
 The following python files are used to build the web-app on Streamlit:
 - [Main Page] (/main_page.py)
 - [Price Prediction] (/price_pred.py)
 - [Recommendation] (/recommendation.py)
+
+
 
 ### Primary Findings & Insights
 From the initial EDA, we can see that there are strong correlation between Bitcoin, Ethereum, and Cardano, and mediocore correlation between these 3 and the meme coin Dogecoin in terms of closing price. Hence, it's safe to assume that whatever models we choose to use in the future can be used on the top 3 cryptocurrencies by marketcap. 
@@ -152,9 +155,10 @@ In addition, I also put the daily closing price together with daily average pola
 
 For the training and model prediction part, I first trained and evluated both time series linear regression model and ARIMA. The linear regression model performance is at 0.996% for testing data, and 0.995% for training data for basic price prediction using autocrrelation (lag 1, lag 2, and lag 7). The ARIMA model on the other hand performs poorly. 
 
-For price prediciton using autocorrelation (lag 1, 2, and 7) with daily polarity and polarity autocorrelation (plag1, plag2, plag7), the linear regression model peroformance drops significantly with a R2 score at -0.63 for testing data, and 0.954 for training data. The model is way too overfit. Once we add in google trend into the model, the R2 score drops even more to -1.11 for testing data, and 0.952 for training data. This explains about the correlation of -10.6% between readdit post polarity and google trend. 
+For price prediciton using autocorrelation (lag 1, 2, and 7) with daily polarity and polarity autocorrelation (plag1, plag2, plag7), the linear regression model peroformance drops significantly with a R2 score at -0.5198 for testing data, and 0.95 for training data. The model is way too overfit. Once we add in google trend into the model, the R2 score drops even more to -0.78 for testing data, and 0.951 for training data. This explains about the correlation of -11% between readdit post polarity and google trend. 
 
 However, one interesting fact to note is that the graph of price prediction between y_test and X_test do still have somewhat of a similar trend for both linear regression models.  
+
 
 
 ### Limitation 
@@ -165,12 +169,17 @@ Basic Twitter API has significant amount of limitation as they only allows you t
 With more time, I think using google trend 5 years with closing price 5 years of bitcoin can give us a better picture than 3 months.
 
 
+
 ### Conclusion & Recommendations
 The web-app that I built can be a valuable asset to regular retail investors like me to guide our assumption by providing numbers that are converted from the public's sentiment of a given cryptocurrency. This tool can be served to give investors a sense of reality and prevent us from making horrible financial investment decision. Regardless of what the bull market may appear to look like, in combination of what seemly are positive exposures on social media, the public sentiment of a given cryptocurrency does not, and should not, serve as a major reason of investment. Public sentiment should only be served as an additional insight. Given the weak correlation of social media posts and google trend, we cannot infer that social media (namely readdit posts) plays a significant role in driving up the prices of cryptocurrency during the COVID-19 pandemic. 
 
 Predicting any time series event is exceptionally hard. In the case of predicting price of bitcoin, the best way is to use time series linear model to predict the price lag of yesterday, the day before yesterday, and the seasonal trend. Given that the model is performing at 99.5% for testing data, any other features I'm adding such as public sentiments are just adding noises.
 
 That being said, this tool should only be served as an additional insight to what the public is thinking, as well as doubling checking of your beliefs with realistic data and numbers (i.e. updating your beliefs). It is appearent that the public, sometimes, does not act based on what they post. 
+
+From this project, I just proved myself (and many others) wrong that public sentiment on social media has little to do with the bull price movement we saw during the start of COVID-19 pandemic, regardless of what we naively believe in. 
+
+
 
 ### Next Steps
 For next steps, I'd recommend to use 2 additional stocks to put as an additional insight to cryptocurrency price prediction. The 2 stocks are AMD and NVIDIA. These two stocks are semiconductor companies that make the semiconductors to use for coin mining. There are many more ideas to improve the workability, efficiency, and usefulness of this application from its current intial prototype.

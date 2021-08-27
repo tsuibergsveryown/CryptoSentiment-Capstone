@@ -116,21 +116,49 @@ def app():
         st.write(fig)
 
     with st.expander("Google Trend - 5 Years"):
-        st.line_chart(google_trend_5y.bitcoin)
+        #st.line_chart(google_trend_5y.bitcoin)
+        fig = plt.figure(figsize=(12, 9))
+        plt.plot(google_trend_5y['date'], google_trend_5y['bitcoin'], label='Bitcoin Google Trend')
+        plt.legend()
+        st.write(fig)
 
     with st.expander("Google Trend - 3 Months Apr-Jul, 2021"):
-        st.line_chart(google_trend_3m.bitcoin)
+        #st.line_chart(google_trend_3m.bitcoin)
+        fig = plt.figure(figsize=(12, 9))
+        plt.plot(google_trend_3m['date'], google_trend_3m['bitcoin'], label='Bitcoin Google Trend')
+        plt.legend()
+        st.write(fig)
 
     with st.expander("Readdit Sentiment - 3 Months Apr-Jul, 2021"):
-        st.line_chart(readdit_3m.daily_avg_polarity)
+        #st.line_chart(readdit_3m.daily_avg_polarity)
+        fig = plt.figure(figsize=(12, 9))
+        plt.plot(readdit_3m['daily_avg_polarity'], label='Reddit Post Daily Average Polarity')
+        plt.legend()
+        st.write(fig)
 
     with st.expander("Price & Readdit Daily Sentiment Apr-Jul, 2021"):
-        st.line_chart(btc_price_polarity_trend.daily_avg_polarity)
-        st.line_chart(btc_price_polarity_trend.Close)
+        #st.line_chart(btc_price_polarity_trend.daily_avg_polarity)
+        #st.line_chart(btc_price_polarity_trend.Close)
+        fig1 = plt.figure(figsize=(12, 9))
+        plt.plot(btc_price_polarity_trend['daily_avg_polarity'], label='Polarity')
+        plt.legend()
+        fig2 = plt.figure(figsize=(12, 9))
+        plt.plot(btc_price_polarity_trend['Close'], label='Close')
+        plt.legend()
+        st.write(fig1)
+        st.write(fig2)
 
     with st.expander("Price & Google Trend Apr-Jul, 2021"):
-        st.line_chart(btc_price_polarity_trend.Close)
-        st.line_chart(btc_price_polarity_trend.bitcoin)
+        #st.line_chart(btc_price_polarity_trend.Close)
+        #st.line_chart(btc_price_polarity_trend.bitcoin)
+        fit1 = plt.figure(figsize=(12, 9))
+        plt.plot(btc_price_polarity_trend['bitcoin'], label='Google Trend Bitcoin')
+        plt.legend()
+        fig2 = plt.figure(figsize=(12, 9))
+        plt.plot(btc_price_polarity_trend['Close'], label='Close')
+        plt.legend()
+        st.write(fig1)
+        st.write(fig2) 
 
 
 

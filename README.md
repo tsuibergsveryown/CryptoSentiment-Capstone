@@ -20,7 +20,7 @@ A good portion of this project is spent on data wrangling, cleaning, and process
 
 The key deliverable from this project is a tool that scrapes thousands of Reddit posts on Bitcoin (r/bitcoin) in combination of google trend to analyze and model the relationships between daily closing price and public sentiment from April 7 to July 6, 2021 (3 months trend).
 
-Viewer can acess to the web-app [here] (https://cryptosentiment-rg.herojuapp.com/)
+Viewer can acess to the web-app [here] (https://cryptosentiment-rg.herokuapp.com/)
 
 
 ### Contents of this README
